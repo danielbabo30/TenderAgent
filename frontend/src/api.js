@@ -1,4 +1,5 @@
-const API_URL = 'http://localhost:5018/api/tenderanalysis'
+const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:5018'
+const API_URL = `${API_BASE}/api/tenderanalysis`
 
 export async function analyzeTender(vendorProfile, tenderHistory, tender) {
   const response = await fetch(API_URL, {
