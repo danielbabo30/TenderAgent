@@ -36,9 +36,34 @@
 }
 
 .profile-quickbar-name {
+  background: none;
+  border: none;
+  padding: 0;
   color: var(--secondary);
   font-weight: 700;
   font-size: 14px;
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.profile-quickbar-name:hover {
+  color: var(--primary);
+  text-decoration-color: var(--primary);
+}
+
+.vendor-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.vendor-modal-header .modal-title {
+  padding-inline-end: 0;
+  margin: 0;
 }
 
 .card {

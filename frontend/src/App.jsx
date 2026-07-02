@@ -3,12 +3,14 @@ import { vendorProfile as initialVendorProfile, tenderHistory, tenders } from '.
 import TenderCard from './components/TenderCard'
 import AnalysisModal from './components/AnalysisModal'
 import ProfileUpdateModal from './components/ProfileUpdateModal'
+import VendorProfileModal from './components/VendorProfileModal'
 import './App.css'
 
 function App() {
   const [modalData, setModalData] = useState(null)
   const [vendorProfile, setVendorProfile] = useState(initialVendorProfile)
   const [profileModalOpen, setProfileModalOpen] = useState(false)
+  const [profileViewOpen, setProfileViewOpen] = useState(false)
 
   return (
     <div className="page">
@@ -18,7 +20,13 @@ function App() {
       </header>
 
       <div className="profile-quickbar">
-        <span className="profile-quickbar-name">פרופיל ספק: {vendorProfile.companyName}</span>
+        <button
+          type="button"
+          className="profile-quickbar-name"
+          onClick={() => setProfileViewOpen(true)}
+        >
+          פרופיל ספק: {vendorProfile.companyName}
+        </button>
         <button
           type="button"
           className="update-profile-btn"
@@ -76,6 +84,17 @@ function App() {
         result={modalData?.result}
         onClose={() => setModalData(null)}
       />
+
+      {profileViewOpen && (
+        <VendorProfileModal
+          vendorProfile={vendorProfile}
+          onClose={() => setProfileViewOpen(false)}
+          onEdit={() => {
+            setProfileViewOpen(false)
+            setProfileModalOpen(true)
+          }}
+        />
+      )}
 
       {profileModalOpen && (
         <ProfileUpdateModal
