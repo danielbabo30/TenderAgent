@@ -1,3 +1,5 @@
+import { getSuccessLabel } from '../utils/scoreLabel'
+
 function AnalysisModal({ tender, result, onClose }) {
   if (!tender || !result) return null
 
@@ -14,7 +16,7 @@ function AnalysisModal({ tender, result, onClose }) {
         <section className="modal-section">
           <h3 className="modal-section-title">📊 מדד התאמה וסיכויי הצלחה</h3>
           <div className="score-row">
-            <div className="score-circle">{result.successProbability}%</div>
+            <div className="score-circle">{getSuccessLabel(result.successProbability)}</div>
             <p className="score-explanation">{result.successProbabilityExplanation}</p>
           </div>
         </section>

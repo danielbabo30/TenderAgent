@@ -4,6 +4,7 @@ import StarIcon from './StarIcon'
 import ClockIcon from './ClockIcon'
 import { analyzeTender } from '../api'
 import { formatHebrewDate, addDays } from '../utils/dateFormat'
+import { getSuccessLabel } from '../utils/scoreLabel'
 
 function TenderCard({ tender, vendorProfile, tenderHistory, onReadMore }) {
   const [status, setStatus] = useState('idle') // idle | loading | done | error
@@ -105,7 +106,7 @@ function TenderCard({ tender, vendorProfile, tenderHistory, onReadMore }) {
       {expanded && result && (
         <div className="analysis-dropdown">
           <div className="score-row">
-            <div className="score-circle small">{result.successProbability}%</div>
+            <div className="score-circle small">{getSuccessLabel(result.successProbability)}</div>
             <p className="score-explanation">{result.successProbabilityExplanation}</p>
           </div>
           <button
